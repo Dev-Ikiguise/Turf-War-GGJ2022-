@@ -15,25 +15,22 @@ public class Interact : MonoBehaviour
     public GameObject lamp3;
     public GameObject CoffTable;
 
+    public KeyCode Interact1;
+    public KeyCode Interact2;
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(Interact1))
         {
-            Interact1();
+            
+        }
+
+        if (Input.GetKeyDown(Interact2))
+        {
+            
         }
 
     }
 
-    // Start is called before the first frame update
-    public void Interact1()
-    {
-        
-    }
-
-    // Update is called once per frame
-    public void Interact2()
-    {
-        
-    }
+   
 }
