@@ -22,8 +22,6 @@ public class MoveObject : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
-        Debug.Log(other.name);
         if (other.gameObject.tag == "Paper")
         {
             if (heldObject1 == null && heldObject2 == null && heldObject3 == null)

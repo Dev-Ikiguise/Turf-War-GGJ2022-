@@ -82,10 +82,10 @@ public class Movement2 : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(interact) && activeGridBlock != null)
+        if (Input.GetKeyDown(interact))
         {
             //print(activeGridBlock.task);
-            if (gameObject.name == "Player 1")
+            if (gameObject.name == "Player 1"  && activeGridBlock != null)
             {
                 switch (activeGridBlock.task.ToString())
                 {
@@ -95,22 +95,37 @@ public class Movement2 : MonoBehaviour
                     case "lamp":
                         activeGridBlock.gameObject.GetComponent<LightTask>().SwitchLight(this.gameObject);
                         break;
+                    case "coffeeTable":
+                        if (gameObject.GetComponentInChildren<RemoteTask>() != null) gameObject.GetComponentInChildren<RemoteTask>().PlaceRemote(activeGridBlock.gameObject);
+                        break;
                     default:
                         break;
                 }
             }
             else
             {
-                switch (activeGridBlock.task.ToString())
+                if (gameObject.GetComponentInChildren<RemoteTask>() != null)
                 {
-                    case "filingCabinet":
-                        activeGridBlock.gameObject.GetComponent<FilingCabinetTask>().TossPapers(this.gameObject);
-                        break;
-                    case "lamp":
-                        activeGridBlock.gameObject.GetComponent<LightTask>().SwitchLight(this.gameObject);
-                        break;
-                    default:
-                        break;
+                    GameObject remote = gameObject.GetComponentInChildren<RemoteTask>().gameObject;
+                    remote.transform.parent = null;
+                    remote.transform.position = remote.transform.position - new Vector3(0f, 1f, 0f);
+                }
+                else
+                {
+                    switch (activeGridBlock.task.ToString())
+                    {
+                        case "filingCabinet":
+                            activeGridBlock.gameObject.GetComponent<FilingCabinetTask>().TossPapers(this.gameObject);
+                            break;
+                        case "lamp":
+                            activeGridBlock.gameObject.GetComponent<LightTask>().SwitchLight(this.gameObject);
+                            break;
+                        case "coffeeTable":
+                            if (activeGridBlock.gameObject.GetComponentInChildren<RemoteTask>() != null) activeGridBlock.gameObject.GetComponentInChildren<RemoteTask>().TakeRemote(gameObject);
+                            break;
+                        default:
+                            break;
+                    }
                 }
             }
         }
