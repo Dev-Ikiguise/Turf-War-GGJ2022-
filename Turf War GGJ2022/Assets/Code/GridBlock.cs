@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class GridBlock : MonoBehaviour
 {
-    public bool canMoveInto;
-    void Start()
+    public enum Task
     {
-        
+        table,
+        desk,
+        bed,
+        sink,
+        filingCabinet,
+        lamp,
+        lamp2,
+        lamp3,
+        coffeeTable
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public Task task;
 }

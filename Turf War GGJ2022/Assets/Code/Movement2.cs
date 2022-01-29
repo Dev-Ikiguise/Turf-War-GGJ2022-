@@ -29,12 +29,14 @@ public class Movement2 : MonoBehaviour
     public KeyCode down;
     public KeyCode left;
     public KeyCode right;
+    public KeyCode interact;
 
     public bool canMoveUp;
     public bool canMoveDown;
     public bool canMoveLeft;
     public bool canMoveRight;
 
+    public GridBlock activeGridBlock;
     private void Awake()
     {
         Instance = this;
@@ -79,7 +81,19 @@ public class Movement2 : MonoBehaviour
                 StartCoroutine(MovePlayer(Vector3.right));
             }
         }
+
+        if (Input.GetKeyDown(interact))
+        {
+            print("Grab Success");
+        }
+
+        if (activeGridBlock != null)
+        {
+            print(activeGridBlock.task);
+        }
     }
+
+
 
     public void ResetMovement()
     {

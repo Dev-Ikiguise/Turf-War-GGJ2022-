@@ -17,15 +17,11 @@ public class Interact : MonoBehaviour
 
     public KeyCode Interact1;
 
-
     private void Update()
     {
         if (Input.GetKeyDown(Interact1))
         {
             print("Grab Success");
         }
-
     }
-
-   
 }
