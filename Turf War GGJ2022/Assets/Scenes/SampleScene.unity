@@ -7766,9 +7766,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas - PauseMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 8479213305086817367, guid: f6fdc3c2441d770499518d13614ce6ad, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8479213305888070288, guid: f6fdc3c2441d770499518d13614ce6ad, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479213306216904365, guid: f6fdc3c2441d770499518d13614ce6ad, type: 3}
+      propertyPath: m_Name
+      value: Main Menu Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479213306828939522, guid: f6fdc3c2441d770499518d13614ce6ad, type: 3}
+      propertyPath: m_text
+      value: Main Menu
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6fdc3c2441d770499518d13614ce6ad, type: 3}
