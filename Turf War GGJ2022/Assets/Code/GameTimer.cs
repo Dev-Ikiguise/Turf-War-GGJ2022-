@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GameTimer : MonoBehaviour
 {
-    public float gameTime = 90f;
+    private float gameTime = 90f;
     public Text displayTime;
     public Text displayCountdown;
     private bool countingDown = true;
@@ -24,6 +24,9 @@ public class GameTimer : MonoBehaviour
             if (gameTime <= 0f)
             {
                 Time.timeScale = 0;
+                displayTime.gameObject.SetActive(false);
+                displayCountdown.gameObject.SetActive(true);
+                displayCountdown.text = "FINISH!";
             }
             else
             {

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Movement2 : MonoBehaviour
 {
     public static Movement2 Instance;
+    public Transform child;
 
     [HideInInspector] public bool isMoving;
     private Vector3 origPos, targetPos;
@@ -29,7 +30,10 @@ public class Movement2 : MonoBehaviour
     public KeyCode left;
     public KeyCode right;
 
-    public bool canMoveForward;
+    public bool canMoveUp;
+    public bool canMoveDown;
+    public bool canMoveLeft;
+    public bool canMoveRight;
 
     private void Awake()
     {
@@ -42,8 +46,8 @@ public class Movement2 : MonoBehaviour
     {
         if (Input.GetKeyDown(up) && !isMoving && transform.position.z < maxZPos)
         {
-            transform.eulerAngles = new Vector3(0, 0, 0);
-            if (canMoveForward)
+            child.transform.eulerAngles = new Vector3(0, 0, 0);
+            if (canMoveUp)
             {
                 StartCoroutine(MovePlayer(new Vector3(0, 0, 1)));
             }
@@ -51,8 +55,8 @@ public class Movement2 : MonoBehaviour
 
         if (Input.GetKeyDown(left) && !isMoving && transform.position.x > -maxXPos)
         {
-            transform.eulerAngles = new Vector3(0, 270, 0);
-            if (canMoveForward)
+            child.transform.eulerAngles = new Vector3(0, 270, 0);
+            if (canMoveLeft)
             {
                 StartCoroutine(MovePlayer(Vector3.left));
             }
@@ -60,8 +64,8 @@ public class Movement2 : MonoBehaviour
 
         if (Input.GetKeyDown(down) && !isMoving && transform.position.z > -maxZPos)
         {
-            transform.eulerAngles = new Vector3(0, 180, 0);
-            if (canMoveForward)
+            child.transform.eulerAngles = new Vector3(0, 180, 0);
+            if (canMoveDown)
             {
                 StartCoroutine(MovePlayer(new Vector3(0, 0, -1)));
             }
@@ -69,8 +73,8 @@ public class Movement2 : MonoBehaviour
 
         if (Input.GetKeyDown(right) && !isMoving && transform.position.x < maxXPos)
         {
-            transform.eulerAngles = new Vector3(0, 90, 0);
-            if (canMoveForward)
+            child.transform.eulerAngles = new Vector3(0, 90, 0);
+            if (canMoveRight)
             {
                 StartCoroutine(MovePlayer(Vector3.right));
             }
