@@ -84,7 +84,31 @@ public class Movement2 : MonoBehaviour
 
         if (Input.GetKeyDown(interact) && activeGridBlock != null)
         {
-            print(activeGridBlock.task);
+            //print(activeGridBlock.task);
+            if (gameObject.name == "Player 1")
+            {
+                switch (activeGridBlock.task.ToString())
+                {
+                    case "filingCabinet":
+                        FilingCabinetTask activeTask = activeGridBlock.gameObject.GetComponent<FilingCabinetTask>();
+                        activeTask.OrganizePapers(this.gameObject);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else
+            {
+                switch (activeGridBlock.task.ToString())
+                {
+                    case "filingCabinet":
+                        FilingCabinetTask activeTask = activeGridBlock.gameObject.GetComponent<FilingCabinetTask>();
+                        activeTask.TossPapers(this.gameObject);
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
     }
 

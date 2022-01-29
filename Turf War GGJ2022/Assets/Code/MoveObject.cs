@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class MoveObject : MonoBehaviour
 {
-    private GameObject heldObject1;
-    private GameObject heldObject2;
-    private GameObject heldObject3;
+    public GameObject heldObject1;
+    public GameObject heldObject2;
+    public GameObject heldObject3;
     
     // Start is called before the first frame update
     void Start()
@@ -23,6 +23,7 @@ public class MoveObject : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
+        Debug.Log(other.name);
         if (other.gameObject.tag == "Paper")
         {
             if (heldObject1 == null && heldObject2 == null && heldObject3 == null)
