@@ -82,12 +82,7 @@ public class Movement2 : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(interact))
-        {
-            print("Grab Success");
-        }
-
-        if (activeGridBlock != null)
+        if (Input.GetKeyDown(interact) && activeGridBlock != null)
         {
             print(activeGridBlock.task);
         }
