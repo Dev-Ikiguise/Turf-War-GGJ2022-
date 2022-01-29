@@ -16,16 +16,11 @@ public class Interact : MonoBehaviour
     public GameObject CoffTable;
 
     public KeyCode Interact1;
-    public KeyCode Interact2;
+
 
     private void Update()
     {
         if (Input.GetKeyDown(Interact1))
-        {
-            
-        }
-
-        if (Input.GetKeyDown(Interact2))
         {
             
         }

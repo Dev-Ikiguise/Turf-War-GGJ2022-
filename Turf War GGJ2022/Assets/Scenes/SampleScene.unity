@@ -1405,6 +1405,7 @@ GameObject:
   - component: {fileID: 158466070}
   - component: {fileID: 158466069}
   - component: {fileID: 158466068}
+  - component: {fileID: 158466073}
   m_Layer: 0
   m_Name: Player 2
   m_TagString: Untagged
@@ -1512,6 +1513,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &158466073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 158466067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 022f1634a1552bd4d917170e517572d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  table: {fileID: 0}
+  desk: {fileID: 0}
+  bed: {fileID: 0}
+  sink: {fileID: 0}
+  filingcab: {fileID: 0}
+  cable: {fileID: 0}
+  lamp: {fileID: 0}
+  lamp2: {fileID: 0}
+  lamp3: {fileID: 0}
+  CoffTable: {fileID: 0}
+  Interact1: 305
 --- !u!1 &161717600
 GameObject:
   m_ObjectHideFlags: 0
@@ -16397,6 +16421,7 @@ GameObject:
   - component: {fileID: 2111532447}
   - component: {fileID: 2111532446}
   - component: {fileID: 2111532450}
+  - component: {fileID: 2111532451}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Untagged
@@ -16505,6 +16530,29 @@ MonoBehaviour:
   left: 97
   right: 100
   canMoveForward: 1
+--- !u!114 &2111532451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2111532445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 022f1634a1552bd4d917170e517572d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  table: {fileID: 0}
+  desk: {fileID: 0}
+  bed: {fileID: 0}
+  sink: {fileID: 0}
+  filingcab: {fileID: 0}
+  cable: {fileID: 0}
+  lamp: {fileID: 0}
+  lamp2: {fileID: 0}
+  lamp3: {fileID: 0}
+  CoffTable: {fileID: 0}
+  Interact1: 101
 --- !u!1 &2123123236
 GameObject:
   m_ObjectHideFlags: 0
