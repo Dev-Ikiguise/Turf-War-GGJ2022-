@@ -85,20 +85,10 @@ public class Movement2 : MonoBehaviour
 
     private IEnumerator MovePlayer(Vector3 direction)
     {
-        //SoundManager.Instance.move.Play();
+        //SoundManager.Instance.move.Play()
+
 
         isMoving = true;
-
-        if (isWalkLeft)
-        {
-            //playerSprite.sprite = walkLeft;
-            isWalkLeft = false;
-        }
-        else
-        {
-           //playerSprite.sprite = walkRight;
-            isWalkLeft = true;
-        }
 
         elapsedTime = 0;
 
@@ -123,6 +113,7 @@ public class Movement2 : MonoBehaviour
         {
             //playerSprite.sprite = stand;
         }
+        
     }
 
     public void CancelMove()

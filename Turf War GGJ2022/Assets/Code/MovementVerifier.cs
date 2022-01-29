@@ -16,7 +16,14 @@ public class MovementVerifier : MonoBehaviour
     {
         if (other.GetComponent<GridBlock>())
         {
-            print("TEST");
+            player.canMoveForward = other.GetComponent<GridBlock>().canMoveInto;
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.GetComponent<GridBlock>())
+        {
             player.canMoveForward = other.GetComponent<GridBlock>().canMoveInto;
         }
     }
