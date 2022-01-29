@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class MoveObject : MonoBehaviour
 {
-    private GameObject heldObject;
+    private GameObject heldObject1;
+    private GameObject heldObject2;
+    private GameObject heldObject3;
     
     // Start is called before the first frame update
     void Start()
@@ -20,12 +22,36 @@ public class MoveObject : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        
-        if (heldObject == null && (other.gameObject.tag == "Paper" || other.gameObject.tag == "Remote"))
+
+        if (other.gameObject.tag == "Paper")
         {
-            heldObject = other.gameObject;
-            heldObject.gameObject.transform.parent = this.gameObject.transform;
-            heldObject.gameObject.transform.position = this.gameObject.transform.position + new Vector3(0f,.6f,0f);
+            if (heldObject1 == null && heldObject2 == null && heldObject3 == null)
+            {
+                heldObject1 = other.gameObject;
+                heldObject1.gameObject.transform.parent = this.gameObject.transform;
+                heldObject1.gameObject.transform.position = this.gameObject.transform.position + new Vector3(0f, .6f, 0f);
+            }
+            else if (heldObject1.tag == "Paper" && heldObject2 == null && heldObject3 == null)
+            {
+                heldObject2 = other.gameObject;
+                heldObject2.gameObject.transform.parent = this.gameObject.transform;
+                heldObject2.gameObject.transform.position = this.gameObject.transform.position + new Vector3(0f, .8f, 0f);
+            }
+            else if (heldObject1.tag == "Paper" && heldObject2.tag == "Paper" && heldObject3 == null)
+            {
+                heldObject3 = other.gameObject;
+                heldObject3.gameObject.transform.parent = this.gameObject.transform;
+                heldObject3.gameObject.transform.position = this.gameObject.transform.position + new Vector3(0f, 1f, 0f);
+            }
+        }
+        else if (other.gameObject.tag == "Remote")
+        {
+            if (heldObject1 == null)
+            {
+                heldObject1 = other.gameObject;
+                heldObject1.gameObject.transform.parent = this.gameObject.transform;
+                heldObject1.gameObject.transform.position = this.gameObject.transform.position + new Vector3(0f, .6f, 0f);
+            }
         }
     }
 }
