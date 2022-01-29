@@ -330,7 +330,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Settings
+  m_text: Controls
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
@@ -679,7 +679,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000034332, y: -390}
+  m_AnchoredPosition: {x: 0.000034332, y: -397}
   m_SizeDelta: {x: 153.6765, y: 56.7647}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8479213306129623086
@@ -805,7 +805,7 @@ GameObject:
   - component: {fileID: 8479213306216904366}
   - component: {fileID: 8479213306216904367}
   m_Layer: 5
-  m_Name: Button Map
+  m_Name: Main Menu Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -828,8 +828,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000044823, y: -297}
-  m_SizeDelta: {x: 377.0425, y: 58.0554}
+  m_AnchoredPosition: {x: -0.00005722, y: -297}
+  m_SizeDelta: {x: 347.3605, y: 58.0554}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8479213306216904360
 CanvasRenderer:
@@ -954,7 +954,7 @@ GameObject:
   - component: {fileID: 8479213306707738989}
   - component: {fileID: 8479213306707738994}
   m_Layer: 5
-  m_Name: Settings Button
+  m_Name: Control Map
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1155,7 +1155,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button Map
+  m_text: Main Menu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
