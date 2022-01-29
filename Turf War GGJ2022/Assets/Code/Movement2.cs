@@ -24,6 +24,13 @@ public class Movement2 : MonoBehaviour
     public float maxXPos;
     public float maxZPos;
 
+    public KeyCode up;
+    public KeyCode down;
+    public KeyCode left;
+    public KeyCode right;
+
+    public bool canMoveForward;
+
     private void Awake()
     {
         Instance = this;
@@ -33,28 +40,40 @@ public class Movement2 : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) && !isMoving && transform.position.z < maxZPos)
+        if (Input.GetKeyDown(up) && !isMoving && transform.position.z < maxZPos)
         {
-            //playerSprite.transform.eulerAngles = new Vector3(0, 0, 0);
-            StartCoroutine(MovePlayer(new Vector3(0, 0, 1)));
+            transform.eulerAngles = new Vector3(0, 0, 0);
+            if (canMoveForward)
+            {
+                StartCoroutine(MovePlayer(new Vector3(0, 0, 1)));
+            }
         }
 
-        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow) && !isMoving && transform.position.x > -maxXPos)
+        if (Input.GetKeyDown(left) && !isMoving && transform.position.x > -maxXPos)
         {
-            //playerSprite.transform.eulerAngles = new Vector3(0, 0, 90);
-            StartCoroutine(MovePlayer(Vector3.left));
+            transform.eulerAngles = new Vector3(0, 270, 0);
+            if (canMoveForward)
+            {
+                StartCoroutine(MovePlayer(Vector3.left));
+            }
         }
 
-        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow) && !isMoving && transform.position.z > -maxZPos)
+        if (Input.GetKeyDown(down) && !isMoving && transform.position.z > -maxZPos)
         {
-            //playerSprite.transform.eulerAngles = new Vector3(0, 0, 180);
-            StartCoroutine(MovePlayer(new Vector3(0, 0, -1)));
+            transform.eulerAngles = new Vector3(0, 180, 0);
+            if (canMoveForward)
+            {
+                StartCoroutine(MovePlayer(new Vector3(0, 0, -1)));
+            }
         }
 
-        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow) && !isMoving && transform.position.x < maxXPos)
+        if (Input.GetKeyDown(right) && !isMoving && transform.position.x < maxXPos)
         {
-            //playerSprite.transform.eulerAngles = new Vector3(0, 0, -90);
-            StartCoroutine(MovePlayer(Vector3.right));
+            transform.eulerAngles = new Vector3(0, 90, 0);
+            if (canMoveForward)
+            {
+                StartCoroutine(MovePlayer(Vector3.right));
+            }
         }
     }
 
