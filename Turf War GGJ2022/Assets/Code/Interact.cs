@@ -22,7 +22,7 @@ public class Interact : MonoBehaviour
     {
         if (Input.GetKeyDown(Interact1))
         {
-            
+            print("Grab Success");
         }
 
     }
