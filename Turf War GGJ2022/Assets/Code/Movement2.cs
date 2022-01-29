@@ -90,8 +90,10 @@ public class Movement2 : MonoBehaviour
                 switch (activeGridBlock.task.ToString())
                 {
                     case "filingCabinet":
-                        FilingCabinetTask activeTask = activeGridBlock.gameObject.GetComponent<FilingCabinetTask>();
-                        activeTask.OrganizePapers(this.gameObject);
+                        activeGridBlock.gameObject.GetComponent<FilingCabinetTask>().OrganizePapers(this.gameObject);
+                        break;
+                    case "lamp":
+                        activeGridBlock.gameObject.GetComponent<LightTask>().SwitchLight(this.gameObject);
                         break;
                     default:
                         break;
@@ -102,8 +104,10 @@ public class Movement2 : MonoBehaviour
                 switch (activeGridBlock.task.ToString())
                 {
                     case "filingCabinet":
-                        FilingCabinetTask activeTask = activeGridBlock.gameObject.GetComponent<FilingCabinetTask>();
-                        activeTask.TossPapers(this.gameObject);
+                        activeGridBlock.gameObject.GetComponent<FilingCabinetTask>().TossPapers(this.gameObject);
+                        break;
+                    case "lamp":
+                        activeGridBlock.gameObject.GetComponent<LightTask>().SwitchLight(this.gameObject);
                         break;
                     default:
                         break;
