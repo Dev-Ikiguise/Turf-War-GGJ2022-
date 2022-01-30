@@ -6,6 +6,7 @@ public class GridBlock : MonoBehaviour
 {
     public enum Task
     {
+        none,
         table,
         desk,
         bed,
@@ -35,14 +36,20 @@ public class GridBlock : MonoBehaviour
         if (isClean)
         {
             text.color = Color.blue;
-            cleanVersion.SetActive(true);
-            dirtyVersion.SetActive(false);
+            if (cleanVersion != null)
+            {
+                cleanVersion.SetActive(true);   
+                dirtyVersion.SetActive(false);
+            }
         }
         else
         {
             text.color = Color.red;
-            cleanVersion.SetActive(false);
-            dirtyVersion.SetActive(true);
+            if (cleanVersion != null)
+            {
+                cleanVersion.SetActive(false);
+                dirtyVersion.SetActive(true);
+            }
         }
     }
 }
