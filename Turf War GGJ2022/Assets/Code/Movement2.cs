@@ -6,6 +6,7 @@ public class Movement2 : MonoBehaviour
 {
     public static Movement2 Instance;
     public Transform child;
+    public GameObject plateManager;
 
     [HideInInspector] public bool isMoving;
     private Vector3 origPos, targetPos;
@@ -102,6 +103,22 @@ public class Movement2 : MonoBehaviour
                     case "sink":
                         activeGridBlock.gameObject.GetComponent<SinkTask>().DrainSink();
                         break;
+                    case "counter":
+                        GameObject plate = this.gameObject;
+                        foreach (Transform t in gameObject.GetComponentsInChildren<Transform>())
+                        {
+                            if (t.CompareTag("Plate")) plate = t.gameObject;
+                        }
+                        if (plate != null) plateManager.GetComponent<TableTask>().PlacePlate(activeGridBlock.gameObject, activeGridBlock.task.ToString());
+                        break;
+                    case "table":
+                        GameObject plate1 = this.gameObject;
+                        foreach (Transform t in activeGridBlock.GetComponentsInChildren<Transform>())
+                        {
+                            if (t.CompareTag("Plate")) plate1 = t.gameObject;
+                        }
+                        if (plate1 != null) plateManager.GetComponent<TableTask>().TakePlate(this.gameObject);
+                        break;
                     default:
                         break;
                 }
@@ -129,6 +146,22 @@ public class Movement2 : MonoBehaviour
                             break;
                         case "sink":
                             activeGridBlock.gameObject.GetComponent<SinkTask>().FillSink();
+                            break;
+                        case "counter":
+                            GameObject plate1 = this.gameObject;
+                            foreach (Transform t in activeGridBlock.GetComponentsInChildren<Transform>())
+                            {
+                                if (t.CompareTag("Plate")) plate1 = t.gameObject;
+                            }
+                            if (plate1 != null) plateManager.GetComponent<TableTask>().TakePlate(this.gameObject);
+                            break;
+                        case "table":
+                            GameObject plate = this.gameObject;
+                            foreach (Transform t in gameObject.GetComponentsInChildren<Transform>())
+                            {
+                                if (t.CompareTag("Plate")) plate = t.gameObject;
+                            }
+                            if (plate != null) plateManager.GetComponent<TableTask>().PlacePlate(activeGridBlock.gameObject, activeGridBlock.task.ToString());
                             break;
                         default:
                             break;

@@ -14,7 +14,8 @@ public class GridBlock : MonoBehaviour
         lamp,
         lamp2,
         lamp3,
-        coffeeTable
+        coffeeTable,
+        counter
     }
 
     public Task task;
