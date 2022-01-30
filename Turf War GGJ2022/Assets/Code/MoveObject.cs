@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class MoveObject : MonoBehaviour
 {
-    public GameObject heldObject1;
-    public GameObject heldObject2;
-    public GameObject heldObject3;
+    public GameObject heldObject1 = null;
+    public GameObject heldObject2 = null;
+    public GameObject heldObject3 = null;
     
     // Start is called before the first frame update
     void Start()
@@ -28,19 +28,19 @@ public class MoveObject : MonoBehaviour
             {
                 heldObject1 = other.gameObject;
                 heldObject1.gameObject.transform.parent = this.gameObject.transform;
-                heldObject1.gameObject.transform.position = this.gameObject.transform.position + new Vector3(0f, .6f, 0f);
+                heldObject1.gameObject.transform.position = this.gameObject.transform.position + new Vector3(0f, .8f, 0f);
             }
             else if (heldObject1.tag == "Paper" && heldObject2 == null && heldObject3 == null)
             {
                 heldObject2 = other.gameObject;
                 heldObject2.gameObject.transform.parent = this.gameObject.transform;
-                heldObject2.gameObject.transform.position = this.gameObject.transform.position + new Vector3(0f, .8f, 0f);
+                heldObject2.gameObject.transform.position = this.gameObject.transform.position + new Vector3(0f, 1f, 0f);
             }
             else if (heldObject1.tag == "Paper" && heldObject2.tag == "Paper" && heldObject3 == null)
             {
                 heldObject3 = other.gameObject;
                 heldObject3.gameObject.transform.parent = this.gameObject.transform;
-                heldObject3.gameObject.transform.position = this.gameObject.transform.position + new Vector3(0f, 1f, 0f);
+                heldObject3.gameObject.transform.position = this.gameObject.transform.position + new Vector3(0f, 1.2f, 0f);
             }
         }
         else if (other.gameObject.tag == "Remote")
@@ -49,7 +49,7 @@ public class MoveObject : MonoBehaviour
             {
                 heldObject1 = other.gameObject;
                 heldObject1.gameObject.transform.parent = this.gameObject.transform;
-                heldObject1.gameObject.transform.position = this.gameObject.transform.position + new Vector3(0f, .6f, 0f);
+                heldObject1.gameObject.transform.position = this.gameObject.transform.position + new Vector3(0f, .8f, 0f);
             }
         }
     }
