@@ -102,7 +102,7 @@ public class Movement2 : MonoBehaviour
                         break;
                 }
             }
-            else
+            else if (gameObject.name == "Player 2" && activeGridBlock != null)
             {
                 if (gameObject.GetComponentInChildren<RemoteTask>() != null)
                 {
