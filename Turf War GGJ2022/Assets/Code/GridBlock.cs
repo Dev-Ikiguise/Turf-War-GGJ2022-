@@ -27,12 +27,17 @@ public class GridBlock : MonoBehaviour
 
     public TextMeshProUGUI text;
 
-    public AudioSource audioSource;
+    [HideInInspector] public AudioSource audioSource;
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     public void MakeClean(bool isClean)
     {
         this.isClean = isClean;
-        //audioSource.Play();
+        audioSource.Play();
 
         if (isClean)
         {
