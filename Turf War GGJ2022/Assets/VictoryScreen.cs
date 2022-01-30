@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class VictoryScreen : MonoBehaviour
 {
+
+    public bool WinnerAnnoucnement;
+
     public void MainMenu()
     {
         SceneManager.LoadScene("MainMenu");
