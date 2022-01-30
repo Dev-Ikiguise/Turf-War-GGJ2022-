@@ -84,6 +84,7 @@ public class Movement2 : MonoBehaviour
 
         if (Input.GetKeyDown(interact))
         {
+            if (activeGridBlock == null) return;
             print(activeGridBlock.task);
             if (gameObject.name == "Player 1"  && activeGridBlock != null) //CLEAN PERSON
             {
