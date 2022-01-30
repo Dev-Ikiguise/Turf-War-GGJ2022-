@@ -32,7 +32,7 @@ public class GridBlock : MonoBehaviour
     public void MakeClean(bool isClean)
     {
         this.isClean = isClean;
-        audioSource.Play();
+        //audioSource.Play();
 
         if (isClean)
         {
