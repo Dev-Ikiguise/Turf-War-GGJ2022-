@@ -25,12 +25,12 @@ public class GridBlock : MonoBehaviour
 
     public TextMeshProUGUI text;
 
-    public AudioSource audio;
+    public AudioSource audioSource;
 
     public void MakeClean(bool isClean)
     {
         this.isClean = isClean;
-        audio.Play();
+        audioSource.Play();
 
         if (isClean)
         {

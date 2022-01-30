@@ -5,43 +5,25 @@ using TMPro;
 
 public class TaskManager : MonoBehaviour
 {
-    [SerializeField] TextMeshPro tableText;
-    [SerializeField] TextMeshPro cofeeTableText;
-    [SerializeField] TextMeshPro deskText;
-    [SerializeField] TextMeshPro bedText;
-    [SerializeField] TextMeshPro sinkText;
-    [SerializeField] TextMeshPro filingCabinetText;
-    [SerializeField] TextMeshPro lamp1Text;
-    [SerializeField] TextMeshPro lamp2Text;
-    [SerializeField] TextMeshPro lamp3Text;
+    public static TaskManager Instance;
 
-    [SerializeField] GridBlock tableBlock;
-    [SerializeField] GridBlock coffeeTableBlock;
-    [SerializeField] GridBlock deskBlock;
-    [SerializeField] GridBlock bedBlock;
-    [SerializeField] GridBlock sinkBlock;
-    [SerializeField] GridBlock filingCabinetBlock;
-    [SerializeField] GridBlock lamp1Block;
-    [SerializeField] GridBlock lamp2Block;
-    [SerializeField] GridBlock lamp3Block;
+    public bool tableIsClean;
+    public bool deskIsClean;
+    public bool bedIsClean;
+    public bool sinkIsClean;
+    public bool filingCabinetIsClean;
+    public bool lamp1IsClean;
+    public bool lamp2IsClean;
+    public bool lamp3IsClean;
+    public bool coffeeTableIsClean;
 
-
-    void Start()
+    void Awake()
     {
-        
+        Instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void DetermineWinner()
     {
-        DetermineOwnership();
-    }
 
-    void DetermineOwnership()
-    {
-        if (tableBlock.isClean)
-        {
-            tableText.color = Color.blue;
-        }
     }
 }
