@@ -5,6 +5,7 @@ using UnityEngine;
 public class Movement2 : MonoBehaviour
 {
     public static Movement2 Instance;
+    public Transform child;
 
     [HideInInspector] public bool isMoving;
     private Vector3 origPos, targetPos;
@@ -28,9 +29,14 @@ public class Movement2 : MonoBehaviour
     public KeyCode down;
     public KeyCode left;
     public KeyCode right;
+    public KeyCode interact;
 
-    public bool canMoveForward;
+    public bool canMoveUp;
+    public bool canMoveDown;
+    public bool canMoveLeft;
+    public bool canMoveRight;
 
+    public GridBlock activeGridBlock;
     private void Awake()
     {
         Instance = this;
@@ -42,8 +48,8 @@ public class Movement2 : MonoBehaviour
     {
         if (Input.GetKeyDown(up) && !isMoving && transform.position.z < maxZPos)
         {
-            transform.eulerAngles = new Vector3(0, 0, 0);
-            if (canMoveForward)
+            child.transform.eulerAngles = new Vector3(0, 0, 0);
+            if (canMoveUp)
             {
                 StartCoroutine(MovePlayer(new Vector3(0, 0, 1)));
             }
@@ -51,8 +57,8 @@ public class Movement2 : MonoBehaviour
 
         if (Input.GetKeyDown(left) && !isMoving && transform.position.x > -maxXPos)
         {
-            transform.eulerAngles = new Vector3(0, 270, 0);
-            if (canMoveForward)
+            child.transform.eulerAngles = new Vector3(0, 270, 0);
+            if (canMoveLeft)
             {
                 StartCoroutine(MovePlayer(Vector3.left));
             }
@@ -60,8 +66,8 @@ public class Movement2 : MonoBehaviour
 
         if (Input.GetKeyDown(down) && !isMoving && transform.position.z > -maxZPos)
         {
-            transform.eulerAngles = new Vector3(0, 180, 0);
-            if (canMoveForward)
+            child.transform.eulerAngles = new Vector3(0, 180, 0);
+            if (canMoveDown)
             {
                 StartCoroutine(MovePlayer(new Vector3(0, 0, -1)));
             }
@@ -69,13 +75,70 @@ public class Movement2 : MonoBehaviour
 
         if (Input.GetKeyDown(right) && !isMoving && transform.position.x < maxXPos)
         {
-            transform.eulerAngles = new Vector3(0, 90, 0);
-            if (canMoveForward)
+            child.transform.eulerAngles = new Vector3(0, 90, 0);
+            if (canMoveRight)
             {
                 StartCoroutine(MovePlayer(Vector3.right));
             }
         }
+
+        if (Input.GetKeyDown(interact))
+        {
+            if (activeGridBlock == null) return;
+            print(activeGridBlock.task);
+            if (gameObject.name == "Player 1"  && activeGridBlock != null) //CLEAN PERSON
+            {
+                switch (activeGridBlock.task.ToString())
+                {
+                    case "filingCabinet":
+                        activeGridBlock.gameObject.GetComponent<FilingCabinetTask>().OrganizePapers(this.gameObject);
+                        break;
+                    case "lamp":
+                        activeGridBlock.gameObject.GetComponent<LightTask>().SwitchLight(this.gameObject);
+                        break;
+                    case "coffeeTable":
+                        if (gameObject.GetComponentInChildren<RemoteTask>() != null) gameObject.GetComponentInChildren<RemoteTask>().PlaceRemote(activeGridBlock.gameObject);
+                        break;
+                    case "sink":
+                        activeGridBlock.gameObject.GetComponent<SinkTask>().DrainSink();
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else //DIRTY PERSON
+            {
+                if (gameObject.GetComponentInChildren<RemoteTask>() != null)
+                {
+                    GameObject remote = gameObject.GetComponentInChildren<RemoteTask>().gameObject;
+                    remote.transform.parent = null;
+                    remote.transform.position = remote.transform.position - new Vector3(0f, 1f, 0f);
+                }
+                else
+                {
+                    switch (activeGridBlock.task.ToString())
+                    {
+                        case "filingCabinet":
+                            activeGridBlock.gameObject.GetComponent<FilingCabinetTask>().TossPapers(this.gameObject);
+                            break;
+                        case "lamp":
+                            activeGridBlock.gameObject.GetComponent<LightTask>().SwitchLight(this.gameObject);
+                            break;
+                        case "coffeeTable":
+                            if (activeGridBlock.gameObject.GetComponentInChildren<RemoteTask>() != null) activeGridBlock.gameObject.GetComponentInChildren<RemoteTask>().TakeRemote(gameObject);
+                            break;
+                        case "sink":
+                            activeGridBlock.gameObject.GetComponent<SinkTask>().FillSink();
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+        }
     }
+
+
 
     public void ResetMovement()
     {
@@ -131,3 +194,4 @@ public class Movement2 : MonoBehaviour
         }
     }
 }
+
