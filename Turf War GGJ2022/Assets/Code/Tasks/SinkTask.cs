@@ -8,14 +8,23 @@ public class SinkTask : MonoBehaviour
     //public GameObject sourceObject;
 
     public GameObject sinkWater;
-    
-    public void DrainSink()
+
+    private void Start()
     {
         sinkWater.SetActive(false);
     }
 
-    public void FillSink()
+    public void DrainSink(GameObject block)
+    {
+        sinkWater.SetActive(false);
+        isClean = false;
+        block.gameObject.GetComponent<GridBlock>().MakeClean(true);
+    }
+
+    public void FillSink(GameObject block)
     {
         sinkWater.SetActive(true);
+        isClean = true;
+        block.gameObject.GetComponent<GridBlock>().MakeClean(false);
     }
 }

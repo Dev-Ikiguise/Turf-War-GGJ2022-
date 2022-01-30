@@ -28,6 +28,15 @@ public class FilingCabinetTask : MonoBehaviour
         {
             isClean = true;
         }
+
+        if (isClean)
+        {
+            this.gameObject.GetComponent<GridBlock>().MakeClean(true);
+        }
+        else if (!isClean)
+        {
+            this.gameObject.GetComponent<GridBlock>().MakeClean(false);
+        }
     }
 
     public void OrganizePapers(GameObject player)
@@ -45,8 +54,8 @@ public class FilingCabinetTask : MonoBehaviour
         if (isClean)
         {
             spawnList.Clear();
-            spawnList.Insert(0, new Vector3(2f, -0.2f, 2f));
-            spawnList.Insert(0, new Vector3(-2f, -0.2f, 2f));
+            spawnList.Insert(0, new Vector3(-5f, -0.2f, 2f));
+            spawnList.Insert(0, new Vector3(-2f, -0.2f, 1f));
             spawnList.Insert(0, new Vector3(-2f, -0.2f, -2f));
             spawnList.Insert(0, new Vector3(4f, -0.2f, 4f));
             spawnList.Insert(0, new Vector3(4f, -0.2f, -4f));

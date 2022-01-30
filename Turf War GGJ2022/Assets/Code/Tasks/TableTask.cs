@@ -1,22 +1,48 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class TableTask : MonoBehaviour
 {
     public bool isClean = true;
     public int sinkPlates = 4;
+    public GameObject cleanVersion;
+    public GameObject dirtyVersion;
 
-
+    public TextMeshProUGUI text;
     private void Update()
     {
         if (sinkPlates <= 1)
         {
             isClean = false;
+            //cleanVersion.SetActive(false);
+            //dirtyVersion.SetActive(true);
         }
         else if (sinkPlates >= 3)
         {
             isClean = true;
+            //cleanVersion.SetActive(true);
+            //dirtyVersion.SetActive(false);
+        }
+
+        if (isClean)
+        {
+            text.color = Color.blue;
+            if (cleanVersion != null)
+            {
+                cleanVersion.SetActive(true);
+                dirtyVersion.SetActive(false);
+            }
+        }
+        else
+        {
+            text.color = Color.red;
+            if (cleanVersion != null)
+            {
+                cleanVersion.SetActive(false);
+                dirtyVersion.SetActive(true);
+            }
         }
     }
 
@@ -67,7 +93,7 @@ public class TableTask : MonoBehaviour
                 if (t.CompareTag("Plate")) plate = t.gameObject;
             }
             plate.gameObject.transform.parent = player.transform;
-            plate.gameObject.transform.position = player.transform.position + new Vector3(0f, .6f, 0f);
+            plate.gameObject.transform.position = player.transform.position + new Vector3(0f, 1.4f, 0f);
         }
         else if (player.name == "Player 2" && plateSpace.tag != "Plate")
         {
@@ -77,7 +103,7 @@ public class TableTask : MonoBehaviour
                 if (t.CompareTag("Plate")) plate = t.gameObject;
             }
             plate.transform.parent = player.transform;
-            plate.gameObject.transform.position = player.transform.position + new Vector3(0f, .6f, 0f);
+            plate.gameObject.transform.position = player.transform.position + new Vector3(0f, 1.4f, 0f);
         }
     }
 }

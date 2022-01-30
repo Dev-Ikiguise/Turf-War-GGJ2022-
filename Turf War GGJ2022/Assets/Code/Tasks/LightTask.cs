@@ -12,11 +12,13 @@ public class LightTask : MonoBehaviour
         {
             isClean = true;
             lightObject.gameObject.SetActive(false);
+            this.gameObject.GetComponent<GridBlock>().MakeClean(true);
         }
         else if (player.name == "Player 2")
         {
             isClean = false;
             lightObject.gameObject.SetActive(true);
+            this.gameObject.GetComponent<GridBlock>().MakeClean(false);
         }
     }
 }

@@ -87,7 +87,7 @@ public class Movement2 : MonoBehaviour
         {
             if (gameObject.name == "Player 1"  && activeGridBlock != null) //CLEAN PERSON
             {
-                activeGridBlock.MakeClean(true);
+                //activeGridBlock.MakeClean(true);
                 switch (activeGridBlock.task.ToString())
                 {
                     case "filingCabinet":
@@ -100,7 +100,7 @@ public class Movement2 : MonoBehaviour
                         if (gameObject.GetComponentInChildren<RemoteTask>() != null) gameObject.GetComponentInChildren<RemoteTask>().PlaceRemote(activeGridBlock.gameObject);
                         break;
                     case "sink":
-                        activeGridBlock.gameObject.GetComponent<SinkTask>().DrainSink();
+                        activeGridBlock.gameObject.GetComponent<SinkTask>().DrainSink(activeGridBlock.gameObject);
                         break;
                     case "counter":
                         GameObject plate = this.gameObject;
@@ -118,18 +118,24 @@ public class Movement2 : MonoBehaviour
                         }
                         if (plate1 != null) plateManager.GetComponent<TableTask>().TakePlate(this.gameObject, activeGridBlock.gameObject);
                         break;
+                    case "desk":
+                        activeGridBlock.MakeClean(true);
+                        break;
+                    case "bed":
+                        activeGridBlock.MakeClean(true);
+                        break;
                     default:
                         break;
                 }
             }
             else if (gameObject.name == "Player 2")//DIRTY PERSON
             {
-                activeGridBlock.MakeClean(false);
+                //activeGridBlock.MakeClean(false);
                 if (gameObject.GetComponentInChildren<RemoteTask>() != null)
                 {
                     GameObject remote = gameObject.GetComponentInChildren<RemoteTask>().gameObject;
                     remote.transform.parent = null;
-                    remote.transform.position = remote.transform.position - new Vector3(0f, 1f, 0f);
+                    remote.transform.position = remote.transform.position - new Vector3(0f, 1.5f, 0f);
                 }
                 else
                 {
@@ -142,10 +148,10 @@ public class Movement2 : MonoBehaviour
                             activeGridBlock.gameObject.GetComponent<LightTask>().SwitchLight(this.gameObject);
                             break;
                         case "coffeeTable":
-                            if (activeGridBlock.gameObject.GetComponentInChildren<RemoteTask>() != null) activeGridBlock.gameObject.GetComponentInChildren<RemoteTask>().TakeRemote(gameObject);
+                            if (activeGridBlock.gameObject.GetComponentInChildren<RemoteTask>() != null) activeGridBlock.gameObject.GetComponentInChildren<RemoteTask>().TakeRemote(gameObject, activeGridBlock.gameObject);
                             break;
                         case "sink":
-                            activeGridBlock.gameObject.GetComponent<SinkTask>().FillSink();
+                            activeGridBlock.gameObject.GetComponent<SinkTask>().FillSink(activeGridBlock.gameObject);
                             break;
                         case "counter":
                             GameObject plate1 = this.gameObject;
@@ -162,6 +168,12 @@ public class Movement2 : MonoBehaviour
                                 if (t.CompareTag("Plate")) plate = t.gameObject;
                             }
                             if (plate != null) plateManager.GetComponent<TableTask>().PlacePlate(activeGridBlock.gameObject, activeGridBlock.task.ToString(), this.gameObject);
+                            break;
+                        case "desk":
+                            activeGridBlock.MakeClean(false);
+                            break;
+                        case "bed":
+                            activeGridBlock.MakeClean(false);
                             break;
                         default:
                             break;

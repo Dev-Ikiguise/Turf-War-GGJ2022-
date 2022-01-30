@@ -10,6 +10,9 @@ public class GameTimer : MonoBehaviour
     public Text displayCountdown;
     private bool countingDown = true;
 
+    public Movement2 player1Script;
+    public Movement2 player2Script;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -56,6 +59,8 @@ public class GameTimer : MonoBehaviour
         displayCountdown.text = "1";
         yield return new WaitForSeconds(1);
         displayCountdown.text = "GO!";
+        player1Script.enabled = true;
+        player2Script.enabled = true;
         displayTime.gameObject.SetActive(true);
         countingDown = false;
         yield return new WaitForSeconds(1);
