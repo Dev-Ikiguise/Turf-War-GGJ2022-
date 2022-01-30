@@ -84,8 +84,9 @@ public class Movement2 : MonoBehaviour
 
         if (Input.GetKeyDown(interact))
         {
-            //print(activeGridBlock.task);
-            if (gameObject.name == "Player 1"  && activeGridBlock != null)
+            if (activeGridBlock == null) return;
+            print(activeGridBlock.task);
+            if (gameObject.name == "Player 1"  && activeGridBlock != null) //CLEAN PERSON
             {
                 switch (activeGridBlock.task.ToString())
                 {
@@ -98,11 +99,14 @@ public class Movement2 : MonoBehaviour
                     case "coffeeTable":
                         if (gameObject.GetComponentInChildren<RemoteTask>() != null) gameObject.GetComponentInChildren<RemoteTask>().PlaceRemote(activeGridBlock.gameObject);
                         break;
+                    case "sink":
+                        activeGridBlock.gameObject.GetComponent<SinkTask>().DrainSink();
+                        break;
                     default:
                         break;
                 }
             }
-            else
+            else //DIRTY PERSON
             {
                 if (gameObject.GetComponentInChildren<RemoteTask>() != null)
                 {
@@ -122,6 +126,9 @@ public class Movement2 : MonoBehaviour
                             break;
                         case "coffeeTable":
                             if (activeGridBlock.gameObject.GetComponentInChildren<RemoteTask>() != null) activeGridBlock.gameObject.GetComponentInChildren<RemoteTask>().TakeRemote(gameObject);
+                            break;
+                        case "sink":
+                            activeGridBlock.gameObject.GetComponent<SinkTask>().FillSink();
                             break;
                         default:
                             break;
@@ -187,3 +194,4 @@ public class Movement2 : MonoBehaviour
         }
     }
 }
+
