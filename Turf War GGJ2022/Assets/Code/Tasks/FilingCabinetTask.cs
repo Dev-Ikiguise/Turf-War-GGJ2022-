@@ -24,7 +24,10 @@ public class FilingCabinetTask : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (paper1 == null && paper2 == null && paper3 == null)
+        {
+            isClean = true;
+        }
     }
 
     public void OrganizePapers(GameObject player)
@@ -34,10 +37,6 @@ public class FilingCabinetTask : MonoBehaviour
             if (player.GetComponent<MoveObject>().heldObject1.gameObject != null && player.GetComponent<MoveObject>().heldObject1.tag == "Paper") Destroy(player.GetComponent<MoveObject>().heldObject1.gameObject);
             if (player.GetComponent<MoveObject>().heldObject2.gameObject != null && player.GetComponent<MoveObject>().heldObject2.tag == "Paper") Destroy(player.GetComponent<MoveObject>().heldObject2.gameObject);
             if (player.GetComponent<MoveObject>().heldObject3.gameObject != null && player.GetComponent<MoveObject>().heldObject3.tag == "Paper") Destroy(player.GetComponent<MoveObject>().heldObject3.gameObject);
-            if (paper1 == null && paper2 == null && paper3 == null)
-            {
-                isClean = true;
-            }
         }
     }
 
@@ -53,7 +52,6 @@ public class FilingCabinetTask : MonoBehaviour
             spawnList.Insert(0, new Vector3(4f, -0.2f, -4f));
             spawnList.Insert(0, new Vector3(-4f, -0.2f, -4f));
         }
-        Debug.Log(spawnList.Count);
         if (presses < 2 && (paper1 == null || paper2 == null || paper3 ==null))
         {
             presses++;
