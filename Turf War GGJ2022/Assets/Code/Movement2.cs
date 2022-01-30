@@ -85,8 +85,6 @@ public class Movement2 : MonoBehaviour
 
         if (Input.GetKeyDown(interact))
         {
-            if (activeGridBlock == null) return;
-            print(activeGridBlock.task);
             if (gameObject.name == "Player 1"  && activeGridBlock != null) //CLEAN PERSON
             {
                 switch (activeGridBlock.task.ToString())
@@ -109,7 +107,7 @@ public class Movement2 : MonoBehaviour
                         {
                             if (t.CompareTag("Plate")) plate = t.gameObject;
                         }
-                        if (plate != null) plateManager.GetComponent<TableTask>().PlacePlate(activeGridBlock.gameObject, activeGridBlock.task.ToString());
+                        if (plate != null) plateManager.GetComponent<TableTask>().PlacePlate(activeGridBlock.gameObject, activeGridBlock.task.ToString(), this.gameObject);
                         break;
                     case "table":
                         GameObject plate1 = this.gameObject;
@@ -117,13 +115,13 @@ public class Movement2 : MonoBehaviour
                         {
                             if (t.CompareTag("Plate")) plate1 = t.gameObject;
                         }
-                        if (plate1 != null) plateManager.GetComponent<TableTask>().TakePlate(this.gameObject);
+                        if (plate1 != null) plateManager.GetComponent<TableTask>().TakePlate(this.gameObject, activeGridBlock.gameObject);
                         break;
                     default:
                         break;
                 }
             }
-            else //DIRTY PERSON
+            else if (gameObject.name == "Player 2")//DIRTY PERSON
             {
                 if (gameObject.GetComponentInChildren<RemoteTask>() != null)
                 {
@@ -153,7 +151,7 @@ public class Movement2 : MonoBehaviour
                             {
                                 if (t.CompareTag("Plate")) plate1 = t.gameObject;
                             }
-                            if (plate1 != null) plateManager.GetComponent<TableTask>().TakePlate(this.gameObject);
+                            if (plate1 != null) plateManager.GetComponent<TableTask>().TakePlate(this.gameObject, activeGridBlock.gameObject);
                             break;
                         case "table":
                             GameObject plate = this.gameObject;
@@ -161,7 +159,7 @@ public class Movement2 : MonoBehaviour
                             {
                                 if (t.CompareTag("Plate")) plate = t.gameObject;
                             }
-                            if (plate != null) plateManager.GetComponent<TableTask>().PlacePlate(activeGridBlock.gameObject, activeGridBlock.task.ToString());
+                            if (plate != null) plateManager.GetComponent<TableTask>().PlacePlate(activeGridBlock.gameObject, activeGridBlock.task.ToString(), this.gameObject);
                             break;
                         default:
                             break;

@@ -20,36 +20,64 @@ public class TableTask : MonoBehaviour
         }
     }
 
-    public void PlacePlate(GameObject block, string blockType)
+    public void PlacePlate(GameObject block, string blockType, GameObject player)
     {
-        if (blockType == "counter")
+        GameObject plateSpace = this.gameObject;
+        foreach (Transform t in player.gameObject.GetComponentsInChildren<Transform>())
         {
-            gameObject.transform.parent.GetComponent<MoveObject>().heldObject1 = null;
-            gameObject.transform.parent = block.transform;
-            float stack = 0.41f + (0.03f * sinkPlates);
-            gameObject.transform.position = block.transform.position + new Vector3(0f, stack, 0f);
+            if (t.CompareTag("Plate")) plateSpace = t.gameObject;
         }
-        else if (blockType == "table")
+        if (blockType == "counter" && plateSpace.tag == "Plate")
         {
-            gameObject.transform.parent.GetComponent<MoveObject>().heldObject1 = null;
-            gameObject.transform.parent = block.transform;
-            gameObject.transform.position = block.transform.position + new Vector3(0f, 0.44f, 0f);
+            GameObject plate = this.gameObject;
+            foreach (Transform t in player.gameObject.GetComponentsInChildren<Transform>())
+            {
+                if (t.CompareTag("Plate")) plate = t.gameObject;
+            }
+            plate.gameObject.transform.parent = block.transform;
+            float stack = 0.41f + (0.03f * sinkPlates);
+            plate.gameObject.transform.position = block.transform.position + new Vector3(0f, stack, 0f);
+            sinkPlates++;
+        }
+        else if (blockType == "table" && plateSpace.tag == "Plate")
+        {
+            GameObject plate = this.gameObject;
+            foreach (Transform t in player.gameObject.GetComponentsInChildren<Transform>())
+            {
+                if (t.CompareTag("Plate")) plate = t.gameObject;
+            }
+            plate.gameObject.transform.parent = block.transform;
+            plate.gameObject.transform.position = block.transform.position + new Vector3(0f, 0.44f, 0f);
+            sinkPlates--;
         }
     }
 
-    public void TakePlate(GameObject player)
+    public void TakePlate(GameObject player, GameObject block)
     {
-        if (player.name == "Player 1")
+        GameObject plateSpace = this.gameObject;
+        foreach (Transform t in player.gameObject.GetComponentsInChildren<Transform>())
         {
-            GameObject plate = transform.GetChild(0).gameObject;
-            gameObject.transform.parent = player.transform;
-            gameObject.transform.position = player.transform.position + new Vector3(0f, .6f, 0f);
+            if (t.CompareTag("Plate")) plateSpace = t.gameObject;
         }
-        else if (player.name == "Player 2")
+        if (player.name == "Player 1" && plateSpace.tag != "Plate")
         {
-            GameObject plate = transform.GetChild(transform.childCount - 1).gameObject;
+            GameObject plate = this.gameObject;
+            foreach (Transform t in block.gameObject.GetComponentsInChildren<Transform>())
+            {
+                if (t.CompareTag("Plate")) plate = t.gameObject;
+            }
+            plate.gameObject.transform.parent = player.transform;
+            plate.gameObject.transform.position = player.transform.position + new Vector3(0f, .6f, 0f);
+        }
+        else if (player.name == "Player 2" && plateSpace.tag != "Plate")
+        {
+            GameObject plate = this.gameObject;
+            foreach (Transform t in block.gameObject.GetComponentsInChildren<Transform>())
+            {
+                if (t.CompareTag("Plate")) plate = t.gameObject;
+            }
             plate.transform.parent = player.transform;
-            gameObject.transform.position = player.transform.position + new Vector3(0f, .6f, 0f);
+            plate.gameObject.transform.position = player.transform.position + new Vector3(0f, .6f, 0f);
         }
     }
 }
