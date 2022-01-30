@@ -87,6 +87,7 @@ public class Movement2 : MonoBehaviour
         {
             if (gameObject.name == "Player 1"  && activeGridBlock != null) //CLEAN PERSON
             {
+                activeGridBlock.MakeClean(true);
                 switch (activeGridBlock.task.ToString())
                 {
                     case "filingCabinet":
@@ -123,6 +124,7 @@ public class Movement2 : MonoBehaviour
             }
             else if (gameObject.name == "Player 2")//DIRTY PERSON
             {
+                activeGridBlock.MakeClean(false);
                 if (gameObject.GetComponentInChildren<RemoteTask>() != null)
                 {
                     GameObject remote = gameObject.GetComponentInChildren<RemoteTask>().gameObject;

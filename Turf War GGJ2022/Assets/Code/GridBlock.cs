@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class GridBlock : MonoBehaviour
 {
     public enum Task
     {
+        none,
         table,
         desk,
         bed,
@@ -19,4 +20,42 @@ public class GridBlock : MonoBehaviour
     }
 
     public Task task;
+    public bool isClean;
+
+    public GameObject cleanVersion;
+    public GameObject dirtyVersion;
+
+    public TextMeshProUGUI text;
+
+    [HideInInspector] public AudioSource audioSource;
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
+    public void MakeClean(bool isClean)
+    {
+        this.isClean = isClean;
+        audioSource.Play();
+
+        if (isClean)
+        {
+            text.color = Color.blue;
+            if (cleanVersion != null)
+            {
+                cleanVersion.SetActive(true);   
+                dirtyVersion.SetActive(false);
+            }
+        }
+        else
+        {
+            text.color = Color.red;
+            if (cleanVersion != null)
+            {
+                cleanVersion.SetActive(false);
+                dirtyVersion.SetActive(true);
+            }
+        }
+    }
 }
