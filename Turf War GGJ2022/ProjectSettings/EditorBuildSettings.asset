@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene 1.unity
     guid: ac23c9abe5c78994b8220e1830fbf5ab
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Victory Screen.unity
+    guid: f85a5ab6e97ca5a41a6bc36e41b3506d
   m_configObjects: {}
